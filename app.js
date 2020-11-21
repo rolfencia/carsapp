@@ -43,37 +43,24 @@ let concesionaria = {
     }, 0);
     return totalDeVentas;
     },
-    // puedeComprar: function puedeComprar(auto, persona){
-     //  let auto = this.buscarAuto;
-
-        // };
+    puedeComprar: function puedeComprar(auto, persona){
+       return auto.precio <= persona.capacidadDePagoTotal 
+       && (auto.precio / auto.cuotas) <= persona.capacidadDePagoEnCuotas;
+},
+    autosQuePuedeComprar: function autosQuePuedeComprar(persona){ 
+    let autosParaLaPersona = autos.filter(auto => this.puedeComprar(auto, persona))
+    return autosParaLaPersona;
+    },
 };
 
 
-console.log(concesionaria.puedeComprar("APL123", "Juan"));
+console.log(concesionaria.autosQuePuedeComprar(personas[0]));
 
-/* funcionalidad para verificar si una persona puede comprar o no un auto. 
-Esta permite al sistema definir si una persona al consultar por un auto, puede comprarlo. 
-Las personas solo sacan los autos en cuotas y tomando dos factores como condición de compra. 
-1- Una es el costo total: si el total de un auto excede lo que la persona considera caro, 
-no va a comprar el auto. 
-2- Otra condición es su capacidad de pago en cuotas: si la capacidad 
-de pago en cuotas supera al costo de la cuota, va a poder pagarlo. 
-3- Si ambas condiciones se cumplen, 
-se realiza la compra.
+/* Agregando funcionalidades
+Ahora, te comprometiste a realizarla. Así que manos a la obra. 
+Hay que
 
-función puedeComprar que reciba por parámetro un auto 
-y una persona y devuelva true si la misma puede comprar el auto.
-
-Una persona va a ser representada mediante un objeto literal de la siguiente forma:
-
-{
-nombre: “Juan”,
-capacidadDePagoEnCuotas: 20000,
-capacidadDePagoTotal: 100000
-}
-
-Para comenzar tenés que agregar el código que escribiste en el ejercicio anterior.*/
+Para comenzar tenés que agregar el código que escribiste en el ejercicio anterior..*/
 
 
 
